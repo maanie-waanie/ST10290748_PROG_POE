@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Approve Claims";
+}
+
+<div class="text-center" style="margin-bottom: 40px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Approve Claims</h1>
+</div>
+
+<form asp-action="ApproveClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h1>Approve or Reject Claims</h1>
+        <p>Review the claim details and approve or reject:</p>
+        <hr>
+
+        <p>Claim by <strong>John Doe</strong> for R500 - Hours Worked: 20</p>
+
+        <div class="clearfix">
+            <button type="submit" class="approvebtn">Approve</button>
+            <button type="button" class="cancelbtn">Reject</button>
+        </div>
+    </div>
+</form>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    input[type=text], input[type=file] {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0 25px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+
+        input[type=text]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    button {
+        background-color: cadetblue;
+        color: white;
+        padding: 14px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+        button:hover {
+            opacity: 1;
+        }
+
+    .cancelbtn {
+        background-color: lightslategrey;
+    }
+
+    .cancelbtn, .submitbtn, .refreshbtn, .uploadbtn, .approvebtn {
+        float: left;
+        width: 50%;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+</style>

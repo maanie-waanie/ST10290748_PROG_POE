@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Submit Claim";
+}
+<div class="text-center" style="margin-bottom: 40px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Submit Monthly Claim</h1>
+</div>
+
+<form asp-action="SubmitClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h1>Submit Your Claim</h1>
+        <p>Please fill in the details below to submit your claim:</p>
+        <hr>
+
+        <label for="claimAmount"><b>Claim Amount</b></label>
+        <input type="text" placeholder="Enter claim amount" name="claimAmount" required>
+
+        <label for="hoursWorked"><b>Hours Worked</b></label>
+        <input type="text" placeholder="Enter hours worked" name="hoursWorked" required>
+
+        <div class="clearfix">
+            <button type="submit" class="submitbtn">Submit Claim</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</form>
+
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    input[type=text], input[type=file] {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0 25px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+
+        input[type=text]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    button {
+        background-color: cadetblue;
+        color: white;
+        padding: 14px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+        button:hover {
+            opacity: 1;
+        }
+
+    .cancelbtn {
+        background-color: lightslategrey;
+    }
+
+    .cancelbtn, .submitbtn, .refreshbtn, .uploadbtn, .approvebtn {
+        float: left;
+        width: 50%;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+</style>
+

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Upload Supporting Documents";
+    ViewData["Title"] = "Upload Documents";
 }
 @* <summary>
     Aman Adams
@@ -11,6 +11,25 @@
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //Section for uploading supporting documents *@
+
+@* 
+<form asp-action="UploadDocuments" method="post" enctype="multipart/form-data" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h1>Upload Documents</h1>
+        <p>Please upload the supporting documents for your claim:</p>
+        <hr>
+
+        <label for="file"><b>Select File</b></label>
+        <input type="file" name="file" required>
+
+        <div class="clearfix">
+            <button type="submit" class="uploadbtn">Upload</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</form> *@
+
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
     <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Upload Supporting Documents</h1>
@@ -22,6 +41,8 @@
         <h1>Upload Documents</h1>
         <p>Please upload the supporting documents for your claim:</p>
         <hr>
+
+        @* <input type="hidden" name="claimId" value="@Model.ClaimId" /> *@
 
         <label for="file"><b>Select File</b></label>
         <input type="file" name="file" required>

@@ -10,6 +10,7 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------------//
 //Form section for approving or rejecting claims *@
+
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
     <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Approve Claims</h1>
@@ -21,17 +22,48 @@
         <h1>Approve or Reject Claims</h1>
         <p>Review the claim details and approve or reject:</p>
         <hr>
+        @foreach (var claim in Model.PendingClaims)
+        {
+            <div style="border:1px solid #ccc; padding: 20px; margin-bottom: 20px;">
+                <p><strong>Lecturer:</strong> @claim.LecturerName</p>
+                <p><strong>Claim Amount:</strong> @claim.ClaimAmount</p>
+                <p><strong>Hours Worked:</strong> @claim.HoursWorked</p>
+                <p><strong>Status:</strong> @claim.ClaimStatus.Status</p> <!-- Display the claim status -->
 
-        <p>Claim by <strong>Aman Adams</strong> for R1000 - Hours Worked: 24</p>
-        <p>Claim by <strong>Ranaa Jacobs</strong> for R250 - Hours Worked: 2</p>
+                <form asp-action="ApproveClaim" method="post">
+                    <input type="hidden" name="claimId" value="@claim.Id" />
+                    <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
+                    <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
+                </form>
+            </div>
+        }
 
-
-        <div class="clearfix">
-            <button type="submit" class="approvebtn">Approve</button>
-            <button type="button" class="cancelbtn">Reject</button>
-        </div> 
     </div>
 </form>
+
+
+
+@* <div class="container">
+    <h2>Pending Claims</h2>
+
+    @foreach (var claim in Model.PendingClaims)
+    {
+        <div style="border:1px solid #ccc; padding: 20px; margin-bottom: 20px;">
+            <p><strong>Lecturer:</strong> @claim.LecturerName</p>
+            <p><strong>Claim Amount:</strong> @claim.ClaimAmount</p>
+            <p><strong>Hours Worked:</strong> @claim.HoursWorked</p>
+            <p><strong>Hourly Rate:</strong> @claim.HourlyRate</p>
+            <p><strong>Notes:</strong> @claim.AdditionalNotes</p>
+
+            <form asp-action="ApproveClaim" method="post">
+                <input type="hidden" name="claimId" value="@claim.Id" />
+                <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
+                <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
+            </form>
+        </div>
+    }
+</div> *@
+
 
 @* //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //These styles help format various elements like input fields, buttons, and containers *@

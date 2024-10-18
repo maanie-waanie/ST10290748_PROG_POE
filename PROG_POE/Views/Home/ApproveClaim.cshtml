@@ -42,7 +42,38 @@
 }
 else
 {
-    <p>No claims available for approval.</p>
+    <form asp-action="ApproveClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+        <div class="container">
+            <h1>Approve or Reject Claims</h1>
+            <p>Review the claim details and approve or reject:</p>
+            <hr>
+            <table style="width:100%; border-collapse: collapse;">
+                <tr style="background-color: cadetblue; color: white; text-align: left;">
+                    <th style="padding: 8px;">Lecturer</th>
+                    <th style="padding: 8px;">Claim Amount</th>
+                    <th style="padding: 8px;">Hours Worked</th>
+                    <th style="padding: 8px;">Hourly Rate</th>
+                    <th style="padding: 8px;">Additional Notes</th>
+                    <th style="padding: 8px;">Supporting Documents</th>
+                </tr>
+                <tr style="border: 1px solid #ddd;">
+                    <td style="padding: 8px;">Aman Adams</td>
+                    <td style="padding: 8px;"> 2000</td>
+                    <td style="padding: 8px;">8</td>
+                    <td style="padding: 8px;"> 30</td>
+                    <td style="padding: 8px;">Please can I have this amount</td>
+                    <td style="padding: 8px, color: blue;">BusinessContract.pdf</td>
+                </tr>
+            </table>
+            <hr>
+            <form asp-action="ApproveClaim" method="post">
+                @* <input type="hidden" name="claimId" value="@claim.ClaimID" /> *@
+                <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
+                <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
+            </form>
+        </div>
+    </form>
 }
 
 @* Styles for the buttons and form *@

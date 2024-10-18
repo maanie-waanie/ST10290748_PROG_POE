@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Submit Claim";
 }
+@model PROG_POE.Models.Claim
 @* <summary>
     Aman Adams
     ST10290748
@@ -34,7 +35,7 @@
         </div>
     </div>
 </form> *@
-
+<h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Lecturer Dashboard </h1>
 
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
@@ -79,11 +80,51 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <div class="container">
         <h1>Upload Documents</h1>
-        <label for="supportingDocument">Please upload the supporting documents for your claim:</label>
-        <input type="file" id="supportingDocument" name="supportingDocument" />
+        <label for="SupportingDocsUrl">Please upload the supporting documents for your claim:</label>
+        <input type="file" id="SupportingDocsUrl" name="SupportingDocsUrl" />
+        <span asp-validation-for="SupportingDocsUrl" class="text-danger"></span> <!-- Validation message -->
         <input type="submit" value="Submit Claim" />
     </div>
 </form>
+
+@section Scripts {
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            var fileInput = document.getElementById("SupportingDocsUrl");
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.pdf|\.docx|\.xlsx)$/i;
+            if (!allowedExtensions.exec(filePath)) {
+                alert("Please upload a file in PDF, DOCX, or XLSX format.");
+                fileInput.value = '';
+                event.preventDefault();  // Prevent form submission
+            }
+        });
+    </script>
+}
+
+<div class="text-center" style="margin-bottom: 40px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h2 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Track Claim Status</h2>
+</div>
+
+<form asp-action="TrackClaimStatus" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h2>Track Status</h2>
+        <p>Check the current status of your claim:</p>
+        <hr>
+
+       <label for="status"><b>Status:</b></label>
+      @*  <input type="text" name="status" value="@Model.ClaimStatus.Status" /> *@
+
+
+        <div class="clearfix">
+            <button type="submit" class="refreshbtn">Refresh Status</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</form>
+
 @* <form asp-action="UploadDocuments" method="post" enctype="multipart/form-data" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <div class="container">

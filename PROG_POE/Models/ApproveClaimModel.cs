@@ -1,5 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+//    Aman Adams
+//    ST10290748
+//    Prog2B POE PART 2
+//    Reference: Used W3 Schools for Format and Style
+
 
 namespace PROG_POE.Models
 {
@@ -11,3 +16,4 @@ namespace PROG_POE.Models
         public object ClaimStatus { get; internal set; }
     }
 }
+//------------------------------------------------------END OF FILE----------------------------------------------------------------------------//

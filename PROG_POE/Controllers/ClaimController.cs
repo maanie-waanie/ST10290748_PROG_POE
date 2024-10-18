@@ -4,11 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using PROG_POE.Data;
 using PROG_POE.Models;
 
-/// Summary 
-/// Aman Adams
-/// ST10290748
-/// PROG2B PART 1
-/// Summary
+//    Aman Adams
+//    ST10290748
+//    Prog2B POE PART 2
+//    Reference: Used W3 Schools for Format and Style
 
 
 namespace PROG_POE.Controllers
@@ -26,7 +25,7 @@ namespace PROG_POE.Controllers
         //[HttpPost]
         //public IActionResult TrackClaimStatus(int claimId)
         //{
-        //    var claimStatus = _context.ClaimStatuses.FirstOrDefault(c => c.Id == claimId);
+        //    var claimStatus = _context.claimStatus.FirstOrDefault(c => c.Id == claimId);
         //    if (claimStatus == null)
         //    {
         //        // Handle not found scenario
@@ -94,5 +93,5 @@ namespace PROG_POE.Controllers
     //    return View(claim);
     //}
 }
-
+//------------------------------------------------------END OF FILE----------------------------------------------------------------------------//
 

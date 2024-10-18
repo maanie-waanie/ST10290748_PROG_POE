@@ -2,39 +2,16 @@
     ViewData["Title"] = "Submit Claim";
 }
 @model PROG_POE.Models.Claim
-@* <summary>
+@* 
     Aman Adams
     ST10290748
-    Prog2B PART 1
+    Prog2B POE PART 2
     Reference: Used W3 Schools for Format and Style
-</summary> *@
+ *@
 
-@* //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
+@*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //Form section for submitting a claim *@
-@* <div class="text-center" style="margin-bottom: 40px;">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
-    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Submit Monthly Claim</h1>
-</div>
-
-<form asp-action="SubmitClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <div class="container">
-        <h1>Submit Your Claim</h1>
-        <p>Please fill in the details below to submit your claim:</p>
-        <hr>
-
-        <label for="claimAmount"><b>Claim Amount</b></label>
-        <input type="text" placeholder="Enter claim amount" name="claimAmount" required>
-
-        <label for="hoursWorked"><b>Hours Worked</b></label>
-        <input type="text" placeholder="Enter hours worked" name="hoursWorked" required>
-
-        <div class="clearfix">
-            <button type="submit" class="submitbtn">Submit Claim</button>
-            <button type="button" class="cancelbtn">Cancel</button>
-        </div>
-    </div>
-</form> *@
 <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Lecturer Dashboard </h1>
 
 <div class="text-center" style="margin-bottom: 40px;">
@@ -71,6 +48,9 @@
     </div>
 </form>
 
+@*//--------------------------------------------------------------------------------------------------------------------------------------------//
+  //Form for submitting claim
+*@
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
     <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Upload Supporting Documents</h1>
@@ -102,6 +82,9 @@
     </script>
 }
 
+@*//--------------------------------------------------------------------------------------------------------------------------------------------//
+  //Method to track claim status
+*@
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
     <h2 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Track Claim Status</h2>
@@ -144,7 +127,32 @@
     </div>
 </form> *@
 
-@* //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+@* <div class="text-center" style="margin-bottom: 40px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Submit Monthly Claim</h1>
+</div>
+
+<form asp-action="SubmitClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h1>Submit Your Claim</h1>
+        <p>Please fill in the details below to submit your claim:</p>
+        <hr>
+
+        <label for="claimAmount"><b>Claim Amount</b></label>
+        <input type="text" placeholder="Enter claim amount" name="claimAmount" required>
+
+        <label for="hoursWorked"><b>Hours Worked</b></label>
+        <input type="text" placeholder="Enter hours worked" name="hoursWorked" required>
+
+        <div class="clearfix">
+            <button type="submit" class="submitbtn">Submit Claim</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</form> *@
+
+@*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //These styles help format various elements like input fields, buttons, and containers *@
 <style>
     body {

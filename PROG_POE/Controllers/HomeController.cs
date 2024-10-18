@@ -4,6 +4,12 @@ using PROG_POE.Data;
 using PROG_POE.Models;
 using System.Diagnostics;
 
+//    Aman Adams
+//    ST10290748
+//    Prog2B POE PART 2
+//    Reference: Used W3 Schools for Format and Style
+
+
 namespace PROG_POE.Controllers
 {
     public class HomeController : Controller
@@ -108,3 +114,4 @@ namespace PROG_POE.Controllers
     }
 }
 
+//------------------------------------------------------END OF FILE----------------------------------------------------------------------------//

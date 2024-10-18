@@ -45,8 +45,12 @@ namespace PROG_POE.Controllers
 
         public IActionResult ApproveClaim()
         {
-
-            return View();
+            var claims = _context.Claims.Where(c => c.Status == "Submitted").ToList();
+            if (claims == null)
+            {
+                claims = new List<Claim>();
+            }
+            return View(claims);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

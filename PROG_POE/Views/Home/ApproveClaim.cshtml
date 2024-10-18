@@ -1,72 +1,51 @@
 ﻿@{
-    ViewData["Title"] = "Approve Claims";
+    ViewData["Title"] = "Approve Claim";
 }
-@* <summary>
+@model List<PROG_POE.Models.Claim>
+
+@*
     Aman Adams
     ST10290748
     Prog2B PART 1
     Reference: Used W3 Schools for Format and Style
-</summary>
-
-//-----------------------------------------------------------------------------------------------------------------------------------------//
-//Form section for approving or rejecting claims *@
-
+*@
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
-    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Approve Claims</h1>
+    <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Approve Claims</h1>
 </div>
 
-<form asp-action="ApproveClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <div class="container">
-        <h1>Approve or Reject Claims</h1>
-        <p>Review the claim details and approve or reject:</p>
-        <hr>
-        @foreach (var claim in Model.PendingClaims)
-        {
-            <div style="border:1px solid #ccc; padding: 20px; margin-bottom: 20px;">
-                <p><strong>Lecturer:</strong> @claim.LecturerName</p>
-                <p><strong>Claim Amount:</strong> @claim.ClaimAmount</p>
-                <p><strong>Hours Worked:</strong> @claim.HoursWorked</p>
-                <p><strong>Status:</strong> @claim.ClaimStatus.Status</p> <!-- Display the claim status -->
+@if (Model != null && Model.Any())
+{
+    <form asp-action="ApproveClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+        <div class="container">
+            <h1>Approve or Reject Claims</h1>
+            <p>Review the claim details and approve or reject:</p>
+            <hr>
+            @foreach (var claim in Model)
+            {
+                <div style="border:1px solid #ccc; padding: 20px; margin-bottom: 20px;">
+                    <p><strong>Lecturer:</strong> @claim.LecturerName</p>
+                    <p><strong>Claim Amount:</strong> @claim.claimAmount</p>
+                    <p><strong>Hours Worked:</strong> @claim.TotalHours</p>
+                    <p><strong>Status:</strong> @claim.Status</p>
 
-                <form asp-action="ApproveClaim" method="post">
-                    <input type="hidden" name="claimId" value="@claim.Id" />
-                    <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
-                    <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
-                </form>
-            </div>
-        }
-
-    </div>
-</form>
-
-
-
-@* <div class="container">
-    <h2>Pending Claims</h2>
-
-    @foreach (var claim in Model.PendingClaims)
-    {
-        <div style="border:1px solid #ccc; padding: 20px; margin-bottom: 20px;">
-            <p><strong>Lecturer:</strong> @claim.LecturerName</p>
-            <p><strong>Claim Amount:</strong> @claim.ClaimAmount</p>
-            <p><strong>Hours Worked:</strong> @claim.HoursWorked</p>
-            <p><strong>Hourly Rate:</strong> @claim.HourlyRate</p>
-            <p><strong>Notes:</strong> @claim.AdditionalNotes</p>
-
-            <form asp-action="ApproveClaim" method="post">
-                <input type="hidden" name="claimId" value="@claim.Id" />
-                <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
-                <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
-            </form>
+                    <form asp-action="ApproveClaim" method="post">
+                        <input type="hidden" name="claimId" value="@claim.ClaimID" />
+                        <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
+                        <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
+                    </form>
+                </div>
+            }
         </div>
-    }
-</div> *@
+    </form>
+}
+else
+{
+    <p>No claims available for approval.</p>
+}
 
-
-@* //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//These styles help format various elements like input fields, buttons, and containers *@
+@* Styles for the buttons and form *@
 <style>
     body {
         font-family: Arial, Helvetica, sans-serif;
@@ -128,6 +107,4 @@
         clear: both;
         display: table;
     }
-
 </style>
-@* //---------------------------------------------------------------------------------------END OF FILE-----------------------------------------------------------------------------------------------------// *@

@@ -36,6 +36,73 @@
 </form> *@
 
 
+<div class="text-center" style="margin-bottom: 40px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Submit Monthly Claim</h1>
+</div>
+
+<form asp-controller="Home" asp-action="SubmitClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h1>Submit Your Claim</h1>
+        <p>Please fill in the details below to submit your claim:</p>
+        <hr>
+
+        <label for="LecturerName"><b>Lecturer Name</b></label>
+        <input type="text" placeholder="Enter Name" name="LecturerName" required>
+
+        <label for="claimAmount"><b>Claim Amount</b></label>
+        <input type="text" placeholder="Enter claim amount" name="claimAmount" required>
+
+        <label for="hoursWorked"><b>Hours Worked</b></label>
+        <input type="text" placeholder="Enter hours worked" name="hoursWorked" required>
+
+        <label for="hourlyRate"><b>Hourly Rate</b></label>
+        <input type="text" placeholder="Enter hourly rate" name="hourlyRate" required>
+
+        <label for="additionalNotes"><b>Additional Notes</b></label>
+        <input type="text" placeholder="Any additional notes" name="additionalNotes">
+
+        <div class="clearfix">
+            <button type="submit" class="submitbtn">Submit Claim</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</form>
+
+<div class="text-center" style="margin-bottom: 40px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Upload Supporting Documents</h1>
+</div>
+
+<form asp-controller="Claim" asp-action="Submit" enctype="multipart/form-data" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h1>Upload Documents</h1>
+        <label for="supportingDocument">Please upload the supporting documents for your claim:</label>
+        <input type="file" id="supportingDocument" name="supportingDocument" />
+        <input type="submit" value="Submit Claim" />
+    </div>
+</form>
+@* <form asp-action="UploadDocuments" method="post" enctype="multipart/form-data" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h1>Upload Documents</h1>
+        <p>Please upload the supporting documents for your claim:</p>
+        <hr>
+
+
+
+        <label for="file"><b>Select File</b></label>
+        <input type="file" name="file" required>
+
+        <div class="clearfix">
+            <button type="submit" class="uploadbtn">Upload</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</form> *@
+
 @* //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //These styles help format various elements like input fields, buttons, and containers *@
 <style>

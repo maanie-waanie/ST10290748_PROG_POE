@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+@model PROG_POE.Models.RegisterViewModel
+
+<
+<div class="text-center" style="margin-bottom: 40px;">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Lecturer Dashboard </h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Register</h1>
+</div>
+
+<form method="post">
+    <div>
+        <label for="Username">Username:</label>
+        <input type="text" id="Username" name="Username" required />
+    </div>
+    <div>
+        <label for="Email">Email:</label>
+        <input type="email" id="Email" name="Email" required />
+    </div>
+    <div>
+        <label for="Password">Password:</label>
+        <input type="password" id="Password" name="Password" required />
+    </div>
+    <div>
+        <label for="ConfirmPassword">Confirm Password:</label>
+        <input type="password" id="ConfirmPassword" name="ConfirmPassword" required />
+    </div>
+    <div>
+        <label for="Role">Role:</label>
+        <select id="Role" name="Role">
+            <option value="Lecturer">Lecturer</option>
+            <option value="Coordinator">Coordinator</option>
+            <option value="HR">HR</option>
+        </select>
+    </div>
+    <button type="submit">Register</button>
+</form>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Apply uniform styling to text inputs and file inputs */
+    input[type=text], input[type=file], textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0 25px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        background: #f1f1f1;
+        font-size: 16px;
+    }
+
+        input[type=text]:focus, input[type=file]:focus, textarea:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    button {
+        background-color: cadetblue;
+        color: white;
+        padding: 14px 20px;
+        margin: 20px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+        button:hover {
+            opacity: 1;
+        }
+
+    .cancelbtn {
+        background-color: lightslategrey;
+    }
+
+    .cancelbtn, .submitbtn, .refreshbtn, .uploadbtn, .approvebtn {
+        float: left;
+        width: 50%;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Styling for textarea (Additional Notes) */
+    textarea {
+        height: 150px;
+    }
+</style>

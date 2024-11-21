@@ -10,6 +10,8 @@ namespace PROG_POE
 {
     internal class Claim : System.Security.Claims.Claim
     {
+        
+
         //public Claim()
         //{
         //}

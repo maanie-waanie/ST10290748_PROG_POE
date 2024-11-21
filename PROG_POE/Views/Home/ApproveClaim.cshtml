@@ -32,7 +32,7 @@
                     <p><strong>Hours Worked:</strong> @claim.TotalHours</p>
                     <p><strong>Status:</strong> @claim.Status</p>
 
-                    <form asp-action="ApproveClaim" method="post">
+                    <form asp-action="ApproveClaim" method="post" action="/Coordinator/ApproveClaim">
                         <input type="hidden" name="claimId" value="@claim.ClaimID" />
                         <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
                         <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
@@ -65,7 +65,7 @@ else
                     <td style="padding: 8px;">8</td>
                     <td style="padding: 8px;"> 30</td>
                     <td style="padding: 8px;">Please can I have this amount</td>
-                    <td style="padding: 8px, color: blue;">BusinessContract.pdf</td>
+                    <td style="padding: 8px, colour: blue;">BusinessContract.pdf</td>
                 </tr>
             </table>
             <hr>
@@ -77,6 +77,7 @@ else
         </div>
     </form>
 }
+
 
 
 @*//--------------------------------------------------------------------------------------------------------------------------------------------//*@

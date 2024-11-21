@@ -49,14 +49,73 @@ namespace PROG_POE.Controllers
             return View();
         }
 
-        public IActionResult ApproveClaim()
+        public IActionResult Login()
         {
-            var claims = _context.Claims.Where(c => c.Status == "Submitted").ToList();
-            if (claims == null)
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public async Task<IActionResult> ApproveClaim(int claimId)
+        {
+            var claim = await _context.Claims.FindAsync(claimId);
+            if (claim == null)
             {
-                claims = new List<Claim>();
+                return NotFound();
             }
-            return View(claims);
+
+            // Implement validation logic (e.g., ensuring claim is within allowable limits)
+            if (claim.TotalHours >= 0 && claim.HourlyRate > 0)
+            {
+                claim.Status = "Approved";
+            }
+            else
+            {
+                claim.Status = "Rejected";
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("CoordinatorDashboard");
+        }
+
+
+        //public IActionResult ApproveClaim()
+        //{
+        //    var claims = _context.Claims.Where(c => c.Status == "Submitted").ToList();
+        //    if (claims == null)
+        //    {
+        //        claims = new List<Claim>();
+        //    }
+
+        //    return View(claims);
+        //}
+
+        public async Task<IActionResult> ApproveClaim(int claimId, string action)
+        {
+            var claim = await _context.Claims.FindAsync(claimId);
+            if (claim == null)
+            {
+                return NotFound();
+            }
+
+            // Handle approval or rejection
+            if (action == "approve")
+            {
+                claim.Status = "Approved";
+            }
+            else if (action == "reject")
+            {
+                claim.Status = "Rejected";
+            }
+
+            // Save the updated claim status
+            _context.Update(claim);
+            await _context.SaveChangesAsync();
+
+            // Redirect to the list of claims
+            return RedirectToAction(nameof(ApproveClaim)); // Assuming you want to reload the claims page
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

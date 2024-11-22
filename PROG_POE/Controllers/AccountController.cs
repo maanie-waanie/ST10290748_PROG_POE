@@ -21,29 +21,52 @@ namespace PROG_POE.Controllers
 
         // Handle Login
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Login(string email, string password)
         {
-            returnUrl ??= Url.Content("~/");
-
-            if (ModelState.IsValid)
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
             {
-                var user = await _userManager.FindByNameAsync(model.Username);
-                if (user != null)
+                var result = await _signInManager.PasswordSignInAsync(user, password, isPersistent: false, lockoutOnFailure: false);
+                if (result.Succeeded)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
-
-                    if (result.Succeeded)
-                    {
-                        return RedirectToAction("Dashboard", "Lecturer"); // Redirect to the lecturer dashboard
-                    }
+                    var roles = await _userManager.GetRolesAsync(user);
+                    if (roles.Contains("Lecturer"))
+                        return RedirectToAction("SubmitClaim", "LecturerDashboard", "Lecturer");
+                    if (roles.Contains("Coordinator"))
+                        return RedirectToAction( "ApproveClaim","CoordinatorDashboard", "Coordinator");
+                    if (roles.Contains("HR"))
+                        return RedirectToAction("ApproveClaim","HRDashboard", "HR");
                 }
-
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             }
 
-            return View(model);
+            ModelState.AddModelError("", "Invalid login attempt.");
+            return View();
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        //{
+        //    returnUrl ??= Url.Content("~/");
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await _userManager.FindByNameAsync(model.Username);
+        //        if (user != null)
+        //        {
+        //            var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, false);
+
+        //            if (result.Succeeded)
+        //            {
+        //                return RedirectToAction("Dashboard", "Lecturer"); // Redirect to the lecturer dashboard
+        //            }
+        //        }
+
+        //        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        //    }
+
+        //    return View(model);
+        //}
 
         // Logout page
         public async Task<IActionResult> Logout()

@@ -15,22 +15,22 @@
 
 
 <div class="text-center" style="margin-bottom: 40px;">
-    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Lecturer Dashboard </h1>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Lecturer Dashboard</h1>
     <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Submit Monthly Claim</h1>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Get the input fields
-        var hoursWorked = document.getElementById('hoursWorked');
-        var hourlyRate = document.getElementById('hourlyRate');
-        var claimAmount = document.getElementById('claimAmount');
+        const hoursWorked = document.getElementById('hoursWorked');
+        const hourlyRate = document.getElementById('hourlyRate');
+        const claimAmount = document.getElementById('claimAmount');
 
         // Automatically calculate claim amount when hoursWorked or hourlyRate changes
         function calculateClaimAmount() {
-            var hours = parseFloat(hoursWorked.value);
-            var rate = parseFloat(hourlyRate.value);
+            const hours = parseFloat(hoursWorked.value);
+            const rate = parseFloat(hourlyRate.value);
             if (!isNaN(hours) && !isNaN(rate)) {
                 claimAmount.value = (hours * rate).toFixed(2); // Calculate total amount
             } else {
@@ -44,29 +44,33 @@
     });
 </script>
 
-
-<form method="post" action="/Lecturer/SubmitClaim" enctype="multipart/form-data">
-    <div>
-        <label for="lecturerName">Lecturer Name:</label>
-        <input type="text" id="lecturerName" name="lecturerName" required />
+<form method="post" action="/Lecturer/SubmitClaim" enctype="multipart/form-data" style="border:1px solid #ccc; padding: 20px; font-family: Arial, sans-serif; margin-bottom: 40px;">
+    <div class="form-group">
+        <label for="lecturerName"><b>Lecturer Name:</b></label>
+        <input type="text" id="lecturerName" name="lecturerName" placeholder="Enter your name" required class="form-control" />
     </div>
 
-    <div>
-        <label for="hoursWorked">Hours Worked:</label>
-        <input type="number" id="hoursWorked" name="hoursWorked" required />
+    <div class="form-group">
+        <label for="hoursWorked"><b>Hours Worked:</b></label>
+        <input type="number" id="hoursWorked" name="hoursWorked" placeholder="Enter hours worked" required class="form-control" />
     </div>
 
-    <div>
-        <label for="hourlyRate">Hourly Rate:</label>
-        <input type="number" id="hourlyRate" name="hourlyRate" required />
+    <div class="form-group">
+        <label for="hourlyRate"><b>Hourly Rate:</b></label>
+        <input type="number" id="hourlyRate" name="hourlyRate" placeholder="Enter hourly rate" required class="form-control" />
     </div>
 
-    <div>
-        <label for="supportingDocuments">Upload Supporting Documents:</label>
-        <input type="file" id="supportingDocuments" name="supportingDocuments" accept=".pdf,.docx,.xlsx" />
+    <div class="form-group">
+        <label for="claimAmount"><b>Claim Amount:</b></label>
+        <input type="text" id="claimAmount" name="claimAmount" placeholder="Calculated claim amount" readonly class="form-control" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit Claim</button>
+    <div class="form-group">
+        <label for="supportingDocuments"><b>Upload Supporting Documents:</b></label>
+        <input type="file" id="supportingDocuments" name="supportingDocuments" accept=".pdf,.docx,.xlsx" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="background-color: cadetblue; border: none; padding: 10px 20px; font-size: 1.2em; cursor: pointer; margin-top: 20px;">Submit Claim</button>
 </form>
 
 @* <form asp-controller="Home" asp-action="SubmitClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
@@ -243,7 +247,7 @@ body {
 }
 
 /* Apply uniform styling to text inputs and file inputs */
-input[type=text], input[type=file], textarea {
+input[type="text"], input[type="file"], input[type="number"], textarea {
     width: 100%;
     padding: 15px;
     margin: 10px 0 25px 0;
@@ -253,10 +257,10 @@ input[type=text], input[type=file], textarea {
     font-size: 16px;
 }
 
-    input[type=text]:focus, input[type=file]:focus, textarea:focus {
-        background-color: #ddd;
-        outline: none;
-    }
+input[type="text"]:focus, input[type="file"]:focus, input[type="number"]:focus, textarea:focus {
+    background-color: #ddd;
+    outline: none;
+}
 
 hr {
     border: 1px solid #f1f1f1;
@@ -274,17 +278,8 @@ button {
     opacity: 0.9;
 }
 
-    button:hover {
-        opacity: 1;
-    }
-
-.cancelbtn {
-    background-color: lightslategrey;
-}
-
-.cancelbtn, .submitbtn, .refreshbtn, .uploadbtn, .approvebtn {
-    float: left;
-    width: 50%;
+button:hover {
+    opacity: 1;
 }
 
 .container {

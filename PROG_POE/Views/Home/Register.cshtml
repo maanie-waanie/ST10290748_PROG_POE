@@ -3,9 +3,8 @@
 }
 @model PROG_POE.Models.RegisterViewModel
 
-<
 <div class="text-center" style="margin-bottom: 40px;">
-    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Lecturer Dashboard </h1>
+    <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">Lecturer Dashboard</h1>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
     <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Register</h1>
 </div>
@@ -47,8 +46,8 @@
         box-sizing: border-box;
     }
 
-    /* Apply uniform styling to text inputs and file inputs */
-    input[type=text], input[type=file], textarea {
+    /* Uniform styling for inputs */
+    input[type=text], input[type=email], input[type=password], textarea {
         width: 100%;
         padding: 15px;
         margin: 10px 0 25px 0;
@@ -58,7 +57,7 @@
         font-size: 16px;
     }
 
-        input[type=text]:focus, input[type=file]:focus, textarea:focus {
+        input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea:focus {
             background-color: #ddd;
             outline: none;
         }
@@ -102,7 +101,6 @@
         display: table;
     }
 
-    /* Styling for textarea (Additional Notes) */
     textarea {
         height: 150px;
     }

@@ -2,6 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using PROG_POE.Data;
 
+
+//    Aman Adams
+//    ST10290748
+//    Prog2B POE PART 3
+//    Reference: Used W3 Schools for Format and Style
+
 namespace PROG_POE.Controllers
 {
     public class CoordinatorController : Controller
@@ -42,3 +48,5 @@ namespace PROG_POE.Controllers
     }
 
 }
+
+ //---------------------------------------------------------------------------------------END OF FILE-----------------------------------------------------------------------------------------------------// 

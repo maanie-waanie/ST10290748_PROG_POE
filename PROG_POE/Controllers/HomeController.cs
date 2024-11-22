@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 //    Aman Adams
 //    ST10290748
-//    Prog2B POE PART 2
+//    Prog2B POE PART 3
 //    Reference: Used W3 Schools for Format and Style
 
 

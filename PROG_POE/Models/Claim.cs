@@ -32,6 +32,10 @@ namespace PROG_POE.Models
 
         public double HourlyRate { get; set; }
 
+        public DateTime ApprovedDate { get; set; }
+        public string ContactNumber { get; set; }
+        public string Email { get; set; }
+
     }
 }
 //------------------------------------------------------END OF FILE----------------------------------------------------------------------------//

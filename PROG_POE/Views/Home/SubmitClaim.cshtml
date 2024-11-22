@@ -44,7 +44,7 @@
     });
 </script>
 
-<form method="post" action="/Lecturer/SubmitClaim" enctype="multipart/form-data" style="border:1px solid #ccc; padding: 20px; font-family: Arial, sans-serif; margin-bottom: 40px;">
+<form method="post" action="/Home/SubmitClaim" enctype="multipart/form-data" style="border:1px solid #ccc; padding: 20px; font-family: Arial, sans-serif; margin-bottom: 40px;">
     <div class="form-group">
         <label for="lecturerName"><b>Lecturer Name:</b></label>
         <input type="text" id="lecturerName" name="lecturerName" placeholder="Enter your name" required class="form-control" />
@@ -134,7 +134,7 @@
 @*//--------------------------------------------------------------------------------------------------------------------------------------------//
   //Form for submitting claim
 *@
-<div class="text-center" style="margin-bottom: 40px;">
+@* <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
     <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Upload Supporting Documents</h1>
 </div>
@@ -148,7 +148,7 @@
         <span asp-validation-for="SupportingDocsUrl" class="text-danger"></span> <!-- Validation message -->
         <input type="submit" value="Submit Claim" />
     </div>
-</form>
+</form> *@
 
 @section Scripts {
     <script>
@@ -181,7 +181,7 @@
         <hr>
 
        <label for="status"><b>Status:</b></label>
-      @*  <input type="text" name="status" value="@Model.ClaimStatus.Status" /> *@
+       @* <input type="text" name="status" value="@Model.ClaimStatus.Status" /> *@
 
 
         <div class="clearfix">

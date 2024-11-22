@@ -1,0 +1,63 @@
+﻿@page
+@model PROG_POE.Pages.HRDashboardModel
+@{
+    ViewData["Title"] = "HR Dashboard";
+}
+
+<h1>HR Dashboard</h1>
+
+<!-- Section for viewing and managing approved claims -->
+<h2>Approved Claims</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Lecturer Name</th>
+            <th>Hours Worked</th>
+            <th>Total Amount</th>
+            <th>Date Approved</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model.ApprovedClaims)
+        {
+            <tr>
+                <td>@claim.ClaimId</td>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.TotalAmount</td>
+                <td>@claim.ApprovedDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Section for managing lecturer data -->
+<h2>Manage Lecturer Data</h2>
+<form method="post">
+    <div>
+        <label for="LecturerId">Lecturer ID:</label>
+        <select id="LecturerId" name="LecturerId">
+            @foreach (var lecturer in Model.Lecturers)
+            {
+                <option value="@lecturer.Id">@lecturer.FullName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="ContactNumber">Contact Number:</label>
+        <input type="text" id="ContactNumber" name="ContactNumber" value="@Model.SelectedLecturer?.ContactNumber" />
+    </div>
+    <div>
+        <label for="EmailAddress">Email Address:</label>
+        <input type="email" id="EmailAddress" name="EmailAddress" value="@Model.SelectedLecturer?.Email" />
+    </div>
+    <button type="submit" asp-page-handler="UpdateLecturer">Update</button>
+</form>
+
+<!-- Section for generating reports -->
+<h2>Generate Reports</h2>
+<form method="post" asp-page-handler="GenerateReport">
+    <button type="submit">Download Approved Claims Report</button>
+</form>
+

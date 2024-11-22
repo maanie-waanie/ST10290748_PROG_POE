@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PROG_POE.Data;
@@ -58,27 +59,34 @@ namespace PROG_POE.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> ApproveClaim(int claimId)
+
+        public IActionResult ApproveClaim()
         {
-            var claim = await _context.Claims.FindAsync(claimId);
-            if (claim == null)
-            {
-                return NotFound();
-            }
-
-            // Implement validation logic (e.g., ensuring claim is within allowable limits)
-            if (claim.TotalHours >= 0 && claim.HourlyRate > 0)
-            {
-                claim.Status = "Approved";
-            }
-            else
-            {
-                claim.Status = "Rejected";
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction("CoordinatorDashboard");
+            return View();
         }
+
+      
+        //public async Task<IActionResult> ApproveClaim(int claimId)
+        //{
+        //    var claim = await _context.Claims.FindAsync(claimId);
+        //    if (claim == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // Implement validation logic (e.g., ensuring claim is within allowable limits)
+        //    if (claim.TotalHours >= 0 && claim.HourlyRate > 0)
+        //    {
+        //        claim.Status = "Approved";
+        //    }
+        //    else
+        //    {
+        //        claim.Status = "Rejected";
+        //    }
+
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction("CoordinatorDashboard");
+        //}
 
 
         //public IActionResult ApproveClaim()
@@ -92,31 +100,31 @@ namespace PROG_POE.Controllers
         //    return View(claims);
         //}
 
-        public async Task<IActionResult> ApproveClaim(int claimId, string action)
-        {
-            var claim = await _context.Claims.FindAsync(claimId);
-            if (claim == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> ApproveClaim(int claimId, string action)
+        //{
+        //    var claim = await _context.Claims.FindAsync(claimId);
+        //    if (claim == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            // Handle approval or rejection
-            if (action == "approve")
-            {
-                claim.Status = "Approved";
-            }
-            else if (action == "reject")
-            {
-                claim.Status = "Rejected";
-            }
+        //    // Handle approval or rejection
+        //    if (action == "approve")
+        //    {
+        //        claim.Status = "Approved";
+        //    }
+        //    else if (action == "reject")
+        //    {
+        //        claim.Status = "Rejected";
+        //    }
 
-            // Save the updated claim status
-            _context.Update(claim);
-            await _context.SaveChangesAsync();
+        //    // Save the updated claim status
+        //    _context.Update(claim);
+        //    await _context.SaveChangesAsync();
 
-            // Redirect to the list of claims
-            return RedirectToAction(nameof(ApproveClaim)); // Assuming you want to reload the claims page
-        }
+        //    // Redirect to the list of claims
+        //    return RedirectToAction(nameof(ApproveClaim)); // Assuming you want to reload the claims page
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -18,7 +18,7 @@ builder.Services.AddControllersWithViews();
 
 // Register ApplicationDbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register Identity services
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()

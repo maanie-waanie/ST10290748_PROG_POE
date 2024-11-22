@@ -6,45 +6,18 @@
 @*
     Aman Adams
     ST10290748
-    Prog2B POE PART 2
+    Prog2B POE PART 3
     Reference: Used W3 Schools for Format and Style
 
 *@
 @*//--------------------------------------------------------------------------------------------------------------------------------------------//*@
+@* Table showiing pending claims *@
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
     <h1 style="font-size: 2.5em; font-weight: bold; color: cadetblue; font-family: Ubuntu, sans-serif;">HR/Coordinator Dashboard</h1>
     <h1 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Approve Claims</h1>
 </div>
-@* 
-@if (Model != null && Model.Any())
-{
-    <form asp-action="ApproveClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-        <div class="container">
-            <h1>Approve or Reject Claims</h1>
-            <p>Review the claim details and approve or reject:</p>
-            <hr>
-            @foreach (var claim in Model)
-            {
-                <div style="border:1px solid #ccc; padding: 20px; margin-bottom: 20px;">
-                    <p><strong>Lecturer:</strong> @claim.LecturerName</p>
-                    <p><strong>Claim Amount:</strong> @claim.claimAmount</p>
-                    <p><strong>Hours Worked:</strong> @claim.TotalHours</p>
-                    <p><strong>Status:</strong> @claim.Status</p>
 
-                    <form asp-action="ApproveClaim" method="post" action="/Coordinator/ApproveClaim">
-                        <input type="hidden" name="claimId" value="@claim.ClaimID" />
-                        <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
-                        <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
-                    </form>
-                </div>
-            }
-        </div>
-    </form>
-}
-else
-{ *@
 <div class="container">
     <h1>Approve or Reject Pending Claims</h1>
     <p>Review the claim details and approve or reject:</p>
@@ -98,6 +71,9 @@ else
     </table>
     <hr>
 </div>
+
+@*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//Section To shoe claim history *@
 
 <div class="container">
     <h1>Claims History</h1>
@@ -183,8 +159,9 @@ else
         </table>
         <hr />
 
+@*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+  //Section for editing a lecturers information *@
 
-<!-- Update Lecturer Form -->
 <div id="edit-section" class="d-none">
     <h4>Edit Lecturer Information</h4>
     <form>
@@ -223,9 +200,38 @@ else
 </html>
 
 
-@* } *@
 
+@*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//Code from part 2 *@
+@*
+@if (Model != null && Model.Any())
+{
+    <form asp-action="ApproveClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+        <div class="container">
+            <h1>Approve or Reject Claims</h1>
+            <p>Review the claim details and approve or reject:</p>
+            <hr>
+            @foreach (var claim in Model)
+            {
+                <div style="border:1px solid #ccc; padding: 20px; margin-bottom: 20px;">
+                    <p><strong>Lecturer:</strong> @claim.LecturerName</p>
+                    <p><strong>Claim Amount:</strong> @claim.claimAmount</p>
+                    <p><strong>Hours Worked:</strong> @claim.TotalHours</p>
+                    <p><strong>Status:</strong> @claim.Status</p>
 
+                    <form asp-action="ApproveClaim" method="post" action="/Coordinator/ApproveClaim">
+                        <input type="hidden" name="claimId" value="@claim.ClaimID" />
+                        <button type="submit" name="action" value="approve" class="approvebtn">Approve</button>
+                        <button type="submit" name="action" value="reject" class="cancelbtn">Reject</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </form>
+}
+else
+{ *@
 
 @*//--------------------------------------------------------------------------------------------------------------------------------------------//*@
 @* Styles for the buttons and form *@

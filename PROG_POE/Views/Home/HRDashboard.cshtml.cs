@@ -6,6 +6,13 @@ using PROG_POE.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
+//
+//    Aman Adams
+//    ST10290748
+//    Prog2B POE PART 3
+//    Reference: Used W3 Schools for Format and Style
+
+//--------------------------------------------------------------------------------------------------------------------------------------------//
 namespace PROG_POE.Views.Home
 {
     public class HRDashboardModel : PageModel
@@ -57,4 +64,4 @@ namespace PROG_POE.Views.Home
         }
     }
 }
-
+//---------------------------------------------------------------------------------------END OF FILE-----------------------------------------------------------------------------------------------------// 

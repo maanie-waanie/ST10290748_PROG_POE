@@ -5,14 +5,13 @@
 @* 
     Aman Adams
     ST10290748
-    Prog2B POE PART 2
+    Prog2B POE PART 3
     Reference: Used W3 Schools for Format and Style
  *@
 
 
 @*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //Form section for submitting a claim *@
-
 
 <div class="text-center" style="margin-bottom: 40px;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
@@ -72,6 +71,52 @@
 
     <button type="submit" class="btn btn-primary" style="background-color: cadetblue; border: none; padding: 10px 20px; font-size: 1.2em; cursor: pointer; margin-top: 20px;">Submit Claim</button>
 </form>
+
+
+@section Scripts {
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            var fileInput = document.getElementById("SupportingDocsUrl");
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.pdf|\.docx|\.xlsx)$/i;
+            if (!allowedExtensions.exec(filePath)) {
+                alert("Please upload a file in PDF, DOCX, or XLSX format.");
+                fileInput.value = '';
+                event.preventDefault();  // Prevent form submission
+            }
+        });
+    </script>
+}
+
+
+@*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//Form section to Track a Claim *@
+<div class="text-center" style="margin-bottom: 40px;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
+    <h2 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Track Claim Status</h2>
+</div>
+
+<form asp-action="TrackClaimStatus" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <div class="container">
+        <h2>Track Status</h2>
+        <p>Check the current status of your claim:</p>
+        <hr>
+
+        <label for="status"><b>Status:</b></label>
+        @* <input type="text" name="status" value="@Model.ClaimStatus.Status" /> *@
+
+
+        <div class="clearfix">
+            <button type="submit" class="refreshbtn">Refresh Status</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </div>
+    </div>
+</form>
+
+
+@*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//Code from part 2 *@
 
 @* <form asp-controller="Home" asp-action="SubmitClaim" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
     <div class="container">
@@ -150,46 +195,12 @@
     </div>
 </form> *@
 
-@section Scripts {
-    <script>
-        document.querySelector("form").addEventListener("submit", function (event) {
-            var fileInput = document.getElementById("SupportingDocsUrl");
-            var filePath = fileInput.value;
-            var allowedExtensions = /(\.pdf|\.docx|\.xlsx)$/i;
-            if (!allowedExtensions.exec(filePath)) {
-                alert("Please upload a file in PDF, DOCX, or XLSX format.");
-                fileInput.value = '';
-                event.preventDefault();  // Prevent form submission
-            }
-        });
-    </script>
-}
+
 
 @*//--------------------------------------------------------------------------------------------------------------------------------------------//
   //Method to track claim status
 *@
-<div class="text-center" style="margin-bottom: 40px;">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora">
-    <h2 style="font-size: 2.5em; font-weight: bold; color: gray; font-family: Ubuntu, sans-serif;">Track Claim Status</h2>
-</div>
 
-<form asp-action="TrackClaimStatus" method="post" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <div class="container">
-        <h2>Track Status</h2>
-        <p>Check the current status of your claim:</p>
-        <hr>
-
-       <label for="status"><b>Status:</b></label>
-       @* <input type="text" name="status" value="@Model.ClaimStatus.Status" /> *@
-
-
-        <div class="clearfix">
-            <button type="submit" class="refreshbtn">Refresh Status</button>
-            <button type="button" class="cancelbtn">Cancel</button>
-        </div>
-    </div>
-</form>
 
 @* <form asp-action="UploadDocuments" method="post" enctype="multipart/form-data" style="border:1px solid #ccc; margin-bottom: 40px; font-family: Poppins;">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
@@ -234,6 +245,9 @@
         </div>
     </div>
 </form> *@
+
+
+
 
 @*//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //These styles help format various elements like input fields, buttons, and containers *@
